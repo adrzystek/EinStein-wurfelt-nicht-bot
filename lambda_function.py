@@ -9,4 +9,4 @@ def lambda_handler(event, context):
     player2 = Player('blue' if color == 'red' else 'red')
     piece, position, win_probability = select_best_move(board, dice, player1, player2)
     coords = parse_moves_coords(board, piece, position)
-    send_a_move(game_id, coords, COOKIE)
+    send_a_move(game_id, coords, COOKIE, {'message': round(win_probability, 2)})
